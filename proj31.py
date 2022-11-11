@@ -7,9 +7,11 @@
 # Imports
 import pandas            as pd
 import streamlit         as st
+import numpy             as np
 
 from io                     import BytesIO
 from pycaret.classification import load_model, predict_model
+from transformers import pipeline
 
 
 @st.cache
@@ -47,7 +49,7 @@ def main():
         df_credit = pd.read_feather(data_file_1)
         df_credit = df_credit.sample(50000)
 
-        model_saved = load_model('LR Model Aula 5 062022')
+        model_saved = load_model('ProfCientistaDados m38_supportmaterial05 LR Model 062022')
         predict = predict_model(model_saved, data=df_credit)
 
         df_xlsx = to_excel(predict)
